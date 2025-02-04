@@ -351,6 +351,7 @@ class Sampler:
         #################################
 
         seq_t = torch.full((1,L_mapped), 21).squeeze() # 21 is the mask token
+        seq_orig = seq_orig.to(torch.int64)
         seq_t[contig_map.hal_idx0] = seq_orig[contig_map.ref_idx0]
         
         # Unmask sequence if desired
